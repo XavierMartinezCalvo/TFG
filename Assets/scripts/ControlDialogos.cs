@@ -9,14 +9,20 @@ public class ControlDialogos : MonoBehaviour
     Textos texto;
     public GameObject cartel;
     public GameObject personajeDialogo;
+    public GameObject imagenHUD;
     public CanvasGroup miCanvas;
+    public GameObject personaje;
+    Movement movement;
     [SerializeField] TextMeshProUGUI textoPantalla;
 
     public void ActivarCartel(Textos textoObjeto)
     {
+        movement = personaje.GetComponent<Movement>();
+        movement.mover = false;
         texto = textoObjeto;
         personajeDialogo.SetActive(true);
         cartel.SetActive(true);
+        imagenHUD.SetActive(false);
         colaDialogos.Clear();
         foreach (string textoGuardar in texto.arrayTextos)
         {
@@ -31,6 +37,8 @@ public class ControlDialogos : MonoBehaviour
         {
             cartel.SetActive(false);
             personajeDialogo.SetActive(false);
+            imagenHUD.SetActive(true);
+            movement.mover = true;
             return;
         }
 

@@ -6,15 +6,25 @@ public class ObjetoInteractable : MonoBehaviour
 {
     public Textos textos;
     public GameObject cuadroDialogo;
+    public GameObject alertaCuadro;
     ControlDialogos controlador;
 
-    void Start()
+    void Awake()
     {
         controlador = cuadroDialogo.GetComponent<ControlDialogos>();
     }
 
     private void OnMouseDown()
     {
+        if (controlador != null)
+        {
+            controlador.ActivarCartel(textos);
+        }
+    }
+
+    public void EntraAlerta()
+    {
+        alertaCuadro.SetActive(false);
         if (controlador != null)
         {
             controlador.ActivarCartel(textos);
