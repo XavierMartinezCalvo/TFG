@@ -7,6 +7,8 @@ public class MenuPausa : MonoBehaviour
 
     public GameObject pauseMenuUI;
     public GameObject quitarPausa;
+    public GameObject botonCierre;
+    public GameObject pantallaTutorial;
     private bool isPaused = false;
 
     void Start()
@@ -34,6 +36,8 @@ public class MenuPausa : MonoBehaviour
     {
         quitarPausa.SetActive(true);
         pauseMenuUI.SetActive(false);
+        botonCierre.SetActive(false);
+        pantallaTutorial.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -42,6 +46,16 @@ public class MenuPausa : MonoBehaviour
     {
         quitarPausa.SetActive(false);
         pauseMenuUI.SetActive(true);
+        botonCierre.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+    }
+
+    public void Tutorial()
+    {
+        quitarPausa.SetActive(false);
+        botonCierre.SetActive(true);
+        pantallaTutorial.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }
