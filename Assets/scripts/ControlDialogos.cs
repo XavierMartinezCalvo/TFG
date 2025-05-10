@@ -12,6 +12,8 @@ public class ControlDialogos : MonoBehaviour
     public GameObject imagenHUD;
     public CanvasGroup miCanvas;
     public GameObject personaje;
+    public GameObject botones;
+    public GameObject alertas;
     Movement movement;
     [SerializeField] TextMeshProUGUI textoPantalla;
 
@@ -23,6 +25,8 @@ public class ControlDialogos : MonoBehaviour
         personajeDialogo.SetActive(true);
         cartel.SetActive(true);
         imagenHUD.SetActive(false);
+        botones.SetActive(false);
+        alertas.SetActive(false);
         colaDialogos.Clear();
         foreach (string textoGuardar in texto.arrayTextos)
         {
@@ -38,6 +42,8 @@ public class ControlDialogos : MonoBehaviour
             cartel.SetActive(false);
             personajeDialogo.SetActive(false);
             imagenHUD.SetActive(true);
+            botones.SetActive(true);
+            alertas.SetActive(true);
             movement.mover = true;
             return;
         }
