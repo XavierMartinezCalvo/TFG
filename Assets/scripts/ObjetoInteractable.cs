@@ -30,4 +30,12 @@ public class ObjetoInteractable : MonoBehaviour
             controlador.ActivarCartel(textos);
         }
     }
+
+    public void Exclamacion()
+    {
+        if (controlador != null)
+        {
+            controlador.ActivarPreguntas(textos);
+        }
+    }
 }
