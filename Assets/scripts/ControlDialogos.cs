@@ -25,6 +25,7 @@ public class ControlDialogos : MonoBehaviour
     public GameObject fondoNegro;
     bool enPreguntas = false;
     bool respuestasCorrectas = false;
+    public bool enDialogo = false;
     string fraseActual;
     int numPregunta;
     Movement movement;
@@ -35,6 +36,7 @@ public class ControlDialogos : MonoBehaviour
         movement = personaje.GetComponent<Movement>();
         movement.mover = false;
         enPreguntas = false;
+        enDialogo = true;
         texto = textoObjeto;
         personajeDialogo.SetActive(true);
         cartel.SetActive(true);
@@ -55,6 +57,7 @@ public class ControlDialogos : MonoBehaviour
         botonCartel.enabled = false;
         numPregunta = 1;
         enPreguntas = true;
+        enDialogo = true;
         movement = personaje.GetComponent<Movement>();
         movement.mover = false;
         texto = textoObjeto;
@@ -86,6 +89,7 @@ public class ControlDialogos : MonoBehaviour
             botones.SetActive(true);
             alertas.SetActive(true);
             movement.mover = true;
+            enDialogo = false;
             return;
         }
         else if (enPreguntas)

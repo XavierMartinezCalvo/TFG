@@ -9,12 +9,14 @@ public class Movement : MonoBehaviour
     float movimientoVertical;
     public bool mover = true;
     private Animator animator;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         velocidad = 7f;
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -41,9 +43,9 @@ public class Movement : MonoBehaviour
                 animator.SetBool("moverD", false);
                 animator.SetBool("moverIz", false);
             }
-
-            Vector3 movimiento = new Vector3(movimientoHorizontal, 0, movimientoVertical);
-            transform.Translate(movimiento * velocidad * Time.deltaTime);
+            Vector3 movimiento = new Vector3(movimientoHorizontal, 0, movimientoVertical) * velocidad * Time.deltaTime;
+            //transform.Translate(movimiento * velocidad * Time.deltaTime);
+            rb.MovePosition(rb.position + movimiento);
         }
         
     }

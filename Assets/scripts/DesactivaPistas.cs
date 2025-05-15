@@ -8,11 +8,13 @@ public class DesactivaPistas : MonoBehaviour
 
     ObjetoInteractable objeto;
     Outline outline;
-
+    public GameObject cuadroDialogo;
+    ControlDialogos controlador;
 
     // Start is called before the first frame update
     void Start()
     {
+        controlador = cuadroDialogo.GetComponent<ControlDialogos>();
         objeto = pistaDesactivar.GetComponent<ObjetoInteractable>();
         outline = pistaDesactivar.GetComponent<Outline>();
         objeto.enabled = false;
@@ -21,7 +23,12 @@ public class DesactivaPistas : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && controlador.enDialogo)
+        {
+            objeto.enabled = false;
+            outline.enabled = false;
+        }
+        else if (other.gameObject.tag == "Player")
         {
             objeto.enabled = true;
             outline.enabled = true;

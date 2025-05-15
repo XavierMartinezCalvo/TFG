@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class ObjetoInteractable : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class ObjetoInteractable : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (controlador != null)
+        if (controlador != null && controlador.enDialogo != true)
         {
             controlador.ActivarCartel(textos);
         }
