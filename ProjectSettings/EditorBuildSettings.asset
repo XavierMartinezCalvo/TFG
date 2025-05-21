@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Nicrom/Shaders/Wind/Demo/LPW_Prefabs.unity
+    path: Assets/Scenes/EscenaPrincipal.unity
     guid: b1d1fa2b5aa74b8409b7db2947b6d448
   m_configObjects: {}
