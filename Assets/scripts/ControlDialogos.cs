@@ -12,10 +12,12 @@ public class ControlDialogos : MonoBehaviour
     Button botonCartel;
     public GameObject personajeDialogo;
     public GameObject personajePreguntas;
+    public GameObject personajeFinal;
     public GameObject imagenHUD;
     public CanvasGroup miCanvas;
     public GameObject personaje;
     public GameObject botones;
+    public GameObject botonesFinal;
     public GameObject alertas;
     public GameObject respuestas1;
     public GameObject respuestas2;
@@ -23,9 +25,11 @@ public class ControlDialogos : MonoBehaviour
     public GameObject respuestas4;
     public GameObject respuestas5;
     public GameObject fondoNegro;
+    public GameObject fondoNegro2;
     bool enPreguntas = false;
     bool respuestasCorrectas = false;
     public bool enDialogo = false;
+    bool final = false;
     string fraseActual;
     int numPregunta;
     Movement movement;
@@ -84,12 +88,19 @@ public class ControlDialogos : MonoBehaviour
             cartel.SetActive(false);
             personajeDialogo.SetActive(false);
             personajePreguntas.SetActive(false);
-            fondoNegro.SetActive(false);
-            imagenHUD.SetActive(true);
-            botones.SetActive(true);
-            alertas.SetActive(true);
-            movement.mover = true;
-            enDialogo = false;
+            if (final)
+            {
+                botonesFinal.SetActive(true);
+            }
+            else
+            {
+                fondoNegro.SetActive(false);
+                imagenHUD.SetActive(true);
+                botones.SetActive(true);
+                alertas.SetActive(true);
+                movement.mover = true;
+                enDialogo = false;
+            }
             return;
         }
         else if (enPreguntas)
@@ -147,12 +158,12 @@ public class ControlDialogos : MonoBehaviour
                 case 6:
                     botonCartel.enabled = true;
                     respuestas5.SetActive(false);
-                    enPreguntas = false;
                     if (respuestasCorrectas)
                     {
                         //Debug.Log("Todas las respuestas son corectas");
                         fraseActual = colaDialogos.Dequeue();
                         colaDialogos.Dequeue();
+                        numPregunta++;
                         textoPantalla.text = fraseActual;
                         StartCoroutine(MostrarCaracteres(fraseActual));
                     }
@@ -160,9 +171,21 @@ public class ControlDialogos : MonoBehaviour
                     {
                         colaDialogos.Dequeue();
                         fraseActual = colaDialogos.Dequeue();
+                        colaDialogos.Clear();
                         textoPantalla.text = fraseActual;
                         StartCoroutine(MostrarCaracteres(fraseActual));
                     }
+                    break;
+                case 7:
+                    fondoNegro.SetActive(false);
+                    fondoNegro2.SetActive(true);
+                    enPreguntas = false;
+                    personajePreguntas.SetActive(false);
+                    personajeFinal.SetActive(true);
+                    final = true;
+                    fraseActual = colaDialogos.Dequeue();
+                    textoPantalla.text = fraseActual;
+                    StartCoroutine(MostrarCaracteres(fraseActual));
                     break;
             }
         }

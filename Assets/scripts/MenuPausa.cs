@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuPausa : MonoBehaviour
 {
@@ -9,7 +10,18 @@ public class MenuPausa : MonoBehaviour
     public GameObject quitarPausa;
     public GameObject botonCierre;
     public GameObject pantallaTutorial;
+    public GameObject pantallaPistas;
+    public GameObject botonesPistas;
     private bool isPaused = false;
+
+    public GameObject pista1;
+    public GameObject pista2;
+    public GameObject pista3;
+    public GameObject pista4;
+    public GameObject pista5;
+
+    public GameObject evento;
+    ControladorPistasEncontradas cPistas;
 
     void Start()
     {
@@ -38,6 +50,8 @@ public class MenuPausa : MonoBehaviour
         pauseMenuUI.SetActive(false);
         botonCierre.SetActive(false);
         pantallaTutorial.SetActive(false);
+        pantallaPistas.SetActive(false);
+        botonesPistas.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -58,6 +72,41 @@ public class MenuPausa : MonoBehaviour
         pantallaTutorial.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+    }
+
+    public void Inicio()
+    {
+        SceneManager.LoadScene("MenuPrincipal");
+    }
+
+    public void Pistas()
+    {
+        quitarPausa.SetActive(false);
+        pauseMenuUI.SetActive(false);
+        botonCierre.SetActive(true);
+        botonesPistas.SetActive(true);
+        pantallaPistas.SetActive(true);
+        cPistas = evento.GetComponent<ControladorPistasEncontradas>();
+        if (cPistas.pista1vista)
+        {
+            pista1.SetActive(true);
+        }
+        if (cPistas.pista2vista)
+        {
+            pista2.SetActive(true);
+        }
+        if (cPistas.pista3vista)
+        {
+            pista3.SetActive(true);
+        }
+        if (cPistas.pista4vista)
+        {
+            pista4.SetActive(true);
+        }
+        if (cPistas.pista5vista)
+        {
+            pista5.SetActive(true);
+        }
     }
 
     public void Exit()

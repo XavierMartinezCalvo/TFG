@@ -10,6 +10,7 @@ public class ObjetoInteractable : MonoBehaviour
     public GameObject cuadroDialogo;
     public GameObject alertaCuadro;
     ControlDialogos controlador;
+    public bool encontrada = false;
 
     void Awake()
     {
@@ -21,6 +22,7 @@ public class ObjetoInteractable : MonoBehaviour
         if (controlador != null && controlador.enDialogo != true)
         {
             controlador.ActivarCartel(textos);
+            encontrada = true;
         }
     }
 
@@ -39,5 +41,10 @@ public class ObjetoInteractable : MonoBehaviour
         {
             controlador.ActivarPreguntas(textos);
         }
+    }
+
+    public void Pista()
+    {
+        controlador.ActivarCartel(textos);
     }
 }

@@ -6,6 +6,6 @@ using UnityEngine;
 
 public class Textos
 {
-    [TextArea(2, 8)]
+    [TextArea(2, 15)]
     public string[] arrayTextos;
 }
