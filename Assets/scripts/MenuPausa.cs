@@ -23,6 +23,8 @@ public class MenuPausa : MonoBehaviour
     public GameObject evento;
     ControladorPistasEncontradas cPistas;
 
+    public AudioSource fuenteSonido;
+
     void Start()
     {
         
@@ -46,6 +48,7 @@ public class MenuPausa : MonoBehaviour
 
     public void Resume()
     {
+        fuenteSonido.Play();
         quitarPausa.SetActive(true);
         pauseMenuUI.SetActive(false);
         botonCierre.SetActive(false);
@@ -58,6 +61,7 @@ public class MenuPausa : MonoBehaviour
 
     public void Pause()
     {
+        fuenteSonido.Play();
         quitarPausa.SetActive(false);
         pauseMenuUI.SetActive(true);
         botonCierre.SetActive(true);
@@ -67,6 +71,7 @@ public class MenuPausa : MonoBehaviour
 
     public void Tutorial()
     {
+        fuenteSonido.Play();
         quitarPausa.SetActive(false);
         botonCierre.SetActive(true);
         pantallaTutorial.SetActive(true);
@@ -76,11 +81,13 @@ public class MenuPausa : MonoBehaviour
 
     public void Inicio()
     {
+        fuenteSonido.Play();
         SceneManager.LoadScene("MenuPrincipal");
     }
 
     public void Pistas()
     {
+        fuenteSonido.Play();
         quitarPausa.SetActive(false);
         pauseMenuUI.SetActive(false);
         botonCierre.SetActive(true);
@@ -111,6 +118,7 @@ public class MenuPausa : MonoBehaviour
 
     public void Exit()
     {
+        fuenteSonido.Play();
         Debug.Log("Saliendo...");
         Application.Quit();
     }

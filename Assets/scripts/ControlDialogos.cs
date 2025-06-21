@@ -34,6 +34,7 @@ public class ControlDialogos : MonoBehaviour
     int numPregunta;
     Movement movement;
     [SerializeField] TextMeshProUGUI textoPantalla;
+    public AudioSource fuenteSonido;
 
     public void ActivarCartel(Textos textoObjeto)
     {
@@ -211,6 +212,7 @@ public class ControlDialogos : MonoBehaviour
 
     public void respuestaCorrecta()
     {
+        fuenteSonido.Play();
         //Debug.Log("Respuesta Correcta");
         //Debug.Log("El numero de preguntas es" + numPregunta);
         if (numPregunta > 2)
@@ -235,6 +237,7 @@ public class ControlDialogos : MonoBehaviour
 
     public void respuestaIncorrecta()
     {
+        fuenteSonido.Play();
         respuestasCorrectas = false;
         SiguienteFrase();
     }

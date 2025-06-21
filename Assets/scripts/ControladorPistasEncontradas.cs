@@ -27,6 +27,8 @@ public class ControladorPistasEncontradas : MonoBehaviour
     public bool pista4vista = false;
     public bool pista5vista = false;
 
+    public AudioSource fuenteSonido;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,7 @@ public class ControladorPistasEncontradas : MonoBehaviour
 
     public void TextoPista1()
     {
+        fuenteSonido.Play();
         quitarPausa.SetActive(true);
         botonCierre.SetActive(false);
         panelPistas.SetActive(false);
@@ -59,6 +62,7 @@ public class ControladorPistasEncontradas : MonoBehaviour
 
     public void TextoPista2()
     {
+        fuenteSonido.Play();
         quitarPausa.SetActive(true);
         botonCierre.SetActive(false);
         panelPistas.SetActive(false);
@@ -68,6 +72,7 @@ public class ControladorPistasEncontradas : MonoBehaviour
 
     public void TextoPista3()
     {
+        fuenteSonido.Play();
         quitarPausa.SetActive(true);
         botonCierre.SetActive(false);
         panelPistas.SetActive(false);
@@ -77,6 +82,7 @@ public class ControladorPistasEncontradas : MonoBehaviour
 
     public void TextoPista4()
     {
+        fuenteSonido.Play();
         quitarPausa.SetActive(true);
         botonCierre.SetActive(false);
         panelPistas.SetActive(false);
@@ -86,6 +92,7 @@ public class ControladorPistasEncontradas : MonoBehaviour
 
     public void TextoPista5()
     {
+        fuenteSonido.Play();
         quitarPausa.SetActive(true);
         botonCierre.SetActive(false);
         panelPistas.SetActive(false);

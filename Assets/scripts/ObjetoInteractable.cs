@@ -11,6 +11,7 @@ public class ObjetoInteractable : MonoBehaviour
     public GameObject alertaCuadro;
     ControlDialogos controlador;
     public bool encontrada = false;
+    public AudioSource fuenteSonido;
 
     void Awake()
     {
@@ -28,6 +29,7 @@ public class ObjetoInteractable : MonoBehaviour
 
     public void EntraAlerta()
     {
+        fuenteSonido.Play();
         alertaCuadro.SetActive(false);
         if (controlador != null)
         {
@@ -37,6 +39,7 @@ public class ObjetoInteractable : MonoBehaviour
 
     public void Exclamacion()
     {
+        fuenteSonido.Play();
         if (controlador != null)
         {
             controlador.ActivarPreguntas(textos);
