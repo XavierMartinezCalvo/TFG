@@ -20,6 +20,8 @@ public class MenuPausa : MonoBehaviour
     public GameObject pista4;
     public GameObject pista5;
 
+    public GameObject sliders;
+
     public GameObject evento;
     ControladorPistasEncontradas cPistas;
 
@@ -55,6 +57,7 @@ public class MenuPausa : MonoBehaviour
         pantallaTutorial.SetActive(false);
         pantallaPistas.SetActive(false);
         botonesPistas.SetActive(false);
+        sliders.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -121,5 +124,14 @@ public class MenuPausa : MonoBehaviour
         fuenteSonido.Play();
         Debug.Log("Saliendo...");
         Application.Quit();
+    }
+
+    public void Volume()
+    {
+        fuenteSonido.Play();
+        quitarPausa.SetActive(false);
+        pauseMenuUI.SetActive(false);
+        botonCierre.SetActive(true);
+        sliders.SetActive(true);
     }
 }
